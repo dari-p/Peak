@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="auth-required">
 
     <div class="layout">
 
@@ -31,6 +31,7 @@
                 <a href="#">Rutinas</a>
                 <a href="#">Progreso</a>
                 <a href="#">Perfil</a>
+                <button type="button" id="logout-button" class="nav-button">Salir</button>
 
             </nav>
 
@@ -41,7 +42,7 @@
             <div class="topbar">
 
                 <div>
-                    <h2>Hola Dari 👋</h2>
+                    <h2 id="welcome-title">Hola</h2>
                     <p>Bienvenido de nuevo.</p>
                 </div>
 
@@ -55,12 +56,12 @@
                     <ul>
                         <li>Press banca</li>
                         <li>Dominadas</li>
-                        <li>Curl bíceps</li>
+                        <li>Curl b&iacute;ceps</li>
                     </ul>
                 </div>
 
                 <div class="card">
-                    <h3>Último PR</h3>
+                    <h3>&Uacute;ltimo PR</h3>
 
                     <p>70kg x 5</p>
                 </div>
@@ -89,6 +90,7 @@
 
     </div>
 
+    <script src="auth.js"></script>
 </body>
 
 </html>

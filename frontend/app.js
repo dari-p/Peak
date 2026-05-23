@@ -1,11 +1,12 @@
 console.log("Peak iniciado");
 
-document.querySelectorAll("button")[0]
-.addEventListener("click", () => {
+const loginButton = document.querySelector("#login-button");
+const registerButton = document.querySelector("#register-button");
+
+loginButton?.addEventListener("click", () => {
     window.location.href = "login.html";
 });
 
-document.querySelectorAll("button")[1]
-.addEventListener("click", () => {
+registerButton?.addEventListener("click", () => {
     window.location.href = "register.html";
 });

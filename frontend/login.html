@@ -19,19 +19,24 @@
 
         <h1>Peak</h1>
 
-        <p>Iniciar sesión</p>
+        <p>Iniciar sesi&oacute;n</p>
 
-        <div class="form">
+        <form class="form" id="login-form">
 
-            <input type="email" placeholder="Correo electrónico">
+            <input type="email" id="login-email" placeholder="Correo electr&oacute;nico" required>
 
-            <input type="password" placeholder="Contraseña">
+            <input type="password" id="login-password" placeholder="Contrase&ntilde;a" required>
 
-            <button>Entrar</button>
+            <button type="submit">Entrar</button>
 
-        </div>
+            <p class="form-message" id="login-message" aria-live="polite"></p>
+
+            <a class="secondary-link" href="register.html">Crear cuenta</a>
+
+        </form>
 
     </div>
 
+    <script src="auth.js"></script>
 </body>
 </html>

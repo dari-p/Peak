@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Peak - Register</title>
+    <title>Peak - Registro</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -21,17 +21,42 @@
 
         <p>Registrarse</p>
 
-        <div class="form">
+        <form class="form" id="register-form">
 
-            <input type="email" placeholder="Correo electrónico">
+            <input type="text" id="register-name" placeholder="Nombre" maxlength="100" required>
 
-            <input type="password" placeholder="Contraseña">
+            <input type="email" id="register-email" placeholder="Correo electr&oacute;nico" required>
 
-            <button>Entrar</button>
+            <input type="password" id="register-password" placeholder="Contrase&ntilde;a" minlength="8" required>
 
-        </div>
+            <div class="form-grid">
+                <input type="number" id="register-age" placeholder="Edad" min="13" max="100" required>
+
+                <select id="register-sex" required>
+                    <option value="">Sexo</option>
+                    <option value="female">Femenino</option>
+                    <option value="male">Masculino</option>
+                    <option value="non_binary">No binario</option>
+                    <option value="prefer_not_to_say">Prefiero no decirlo</option>
+                </select>
+            </div>
+
+            <div class="form-grid">
+                <input type="number" id="register-weight" placeholder="Peso kg" min="1" max="500" step="0.1" required>
+
+                <input type="number" id="register-height" placeholder="Altura cm" min="1" max="260" step="0.1" required>
+            </div>
+
+            <button type="submit">Crear cuenta</button>
+
+            <p class="form-message" id="register-message" aria-live="polite"></p>
+
+            <a class="secondary-link" href="login.html">Ya tengo cuenta</a>
+
+        </form>
 
     </div>
 
+    <script src="auth.js"></script>
 </body>
 </html>
