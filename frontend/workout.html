@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peak - Entreno</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-required workout-page">
+
+    <main class="mobile-shell workout-shell">
+
+        <header class="workout-topbar">
+            <a href="routines.html" class="back-link" aria-label="Volver a rutinas">&lt;</a>
+
+            <div>
+                <span class="eyebrow">Rutina activa</span>
+                <h1>LEGS</h1>
+            </div>
+
+            <a href="routines.html" class="finish-button">Terminar</a>
+        </header>
+
+        <section class="workout-stats" aria-label="Resumen del entrenamiento">
+            <div class="stat-tile">
+                <span>Duraci&oacute;n</span>
+                <strong>12:48</strong>
+            </div>
+
+            <div class="stat-tile">
+                <span>Volumen</span>
+                <strong>4.820 kg</strong>
+            </div>
+
+            <div class="stat-tile">
+                <span>Series</span>
+                <strong>11</strong>
+            </div>
+        </section>
+
+        <section class="workout-progress">
+            <div>
+                <span class="section-kicker">Progreso</span>
+                <h2>4 de 7 ejercicios</h2>
+            </div>
+            <div class="progress-ring" aria-label="57 por ciento completado">57%</div>
+        </section>
+
+        <section class="exercise-stack" aria-label="Ejercicios del entrenamiento">
+            <article class="exercise-block">
+                <div class="exercise-header">
+                    <div class="exercise-avatar">SQ</div>
+                    <div>
+                        <span class="exercise-label">Cu&aacute;driceps</span>
+                        <h2>Sentadilla Hack</h2>
+                    </div>
+                    <button type="button" class="more-button" aria-label="Opciones">...</button>
+                </div>
+
+                <button type="button" class="note-button">Agregar notas aqu&iacute;...</button>
+
+                <div class="rest-chip">Descanso: 2min 15s</div>
+
+                <div class="sets-table" role="table" aria-label="Series de sentadilla hack">
+                    <div class="sets-row sets-head" role="row">
+                        <span>Serie</span>
+                        <span>Anterior</span>
+                        <span>Kg</span>
+                        <span>Reps</span>
+                        <span></span>
+                    </div>
+
+                    <div class="sets-row warmup" role="row">
+                        <span>W</span>
+                        <span>20 x 8</span>
+                        <strong>20</strong>
+                        <strong>8</strong>
+                        <button type="button" class="set-check done" aria-label="Serie completada">&#10003;</button>
+                    </div>
+
+                    <div class="sets-row" role="row">
+                        <span>1</span>
+                        <span>40 x 8</span>
+                        <strong>40</strong>
+                        <strong>8</strong>
+                        <button type="button" class="set-check done" aria-label="Serie completada">&#10003;</button>
+                    </div>
+
+                    <div class="sets-row current" role="row">
+                        <span>2</span>
+                        <span>40 x 8</span>
+                        <strong>42.5</strong>
+                        <strong>8</strong>
+                        <button type="button" class="set-check" aria-label="Marcar serie">&#10003;</button>
+                    </div>
+                </div>
+
+                <button type="button" class="add-set-button">+ Agregar serie</button>
+            </article>
+
+            <article class="exercise-block">
+                <div class="exercise-header">
+                    <div class="exercise-avatar">DL</div>
+                    <div>
+                        <span class="exercise-label">Posterior</span>
+                        <h2>Peso Muerto</h2>
+                    </div>
+                    <button type="button" class="more-button" aria-label="Opciones">...</button>
+                </div>
+
+                <button type="button" class="note-button">Agregar notas aqu&iacute;...</button>
+
+                <div class="rest-chip">Descanso: 2min 0s</div>
+
+                <div class="sets-table" role="table" aria-label="Series de peso muerto">
+                    <div class="sets-row sets-head" role="row">
+                        <span>Serie</span>
+                        <span>Anterior</span>
+                        <span>Kg</span>
+                        <span>Reps</span>
+                        <span></span>
+                    </div>
+
+                    <div class="sets-row" role="row">
+                        <span>1</span>
+                        <span>60 x 6</span>
+                        <strong>60</strong>
+                        <strong>6</strong>
+                        <button type="button" class="set-check done" aria-label="Serie completada">&#10003;</button>
+                    </div>
+
+                    <div class="sets-row current" role="row">
+                        <span>2</span>
+                        <span>60 x 8</span>
+                        <strong>65</strong>
+                        <strong>6</strong>
+                        <button type="button" class="set-check" aria-label="Marcar serie">&#10003;</button>
+                    </div>
+                </div>
+
+                <button type="button" class="add-set-button">+ Agregar serie</button>
+            </article>
+
+            <article class="exercise-block muted-next">
+                <div class="exercise-header">
+                    <div class="exercise-avatar">HC</div>
+                    <div>
+                        <span class="exercise-label">Gl&uacute;teos</span>
+                        <h2>Empuje de Caderas</h2>
+                    </div>
+                    <button type="button" class="more-button" aria-label="Opciones">...</button>
+                </div>
+
+                <p class="next-copy">Pr&oacute;ximo ejercicio. 4 series programadas, descanso de 90s.</p>
+            </article>
+        </section>
+
+    </main>
+
+    <div class="workout-action-bar">
+        <button type="button" class="secondary-workout-button">+ Ejercicio</button>
+        <a href="routines.html" class="finish-wide-button">Terminar entreno</a>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

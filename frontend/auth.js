@@ -5,6 +5,7 @@ const loginForm = document.querySelector("#login-form");
 const registerForm = document.querySelector("#register-form");
 const welcomeTitle = document.querySelector("#welcome-title");
 const logoutButton = document.querySelector("#logout-button");
+const authRequiredPage = document.body.classList.contains("auth-required");
 
 loginForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -50,7 +51,7 @@ registerForm?.addEventListener("submit", async (event) => {
     });
 });
 
-if (welcomeTitle) {
+if (authRequiredPage) {
     loadCurrentUser();
 }
 
@@ -107,7 +108,16 @@ async function loadCurrentUser() {
         }
 
         const user = await response.json();
-        welcomeTitle.textContent = `Hola ${user.name || user.email}`;
+        const displayName = user.name || user.email;
+
+        if (welcomeTitle) {
+            welcomeTitle.textContent = `Hola ${displayName}`;
+        }
+
+        document.querySelectorAll("[data-user-name]").forEach((element) => {
+            element.textContent = displayName;
+        });
+
         document.body.classList.add("auth-ready");
     } catch {
         localStorage.removeItem(TOKEN_KEY);

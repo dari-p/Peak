@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peak - Rutinas</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-required routines-page">
+
+    <main class="mobile-shell">
+
+        <header class="routines-header">
+            <div>
+                <span class="eyebrow">Peak Training</span>
+                <h1>Entrenamiento</h1>
+            </div>
+
+            <div class="profile-pill" title="Usuario activo">
+                <span data-user-name>Perfil</span>
+            </div>
+        </header>
+
+        <section class="hero-action">
+            <a href="workout.html" class="start-empty-button">
+                <span class="button-icon">+</span>
+                Empezar entrenamiento vac&iacute;o
+            </a>
+        </section>
+
+        <section class="routine-actions" aria-label="Acciones de rutinas">
+            <button type="button" class="action-tile">
+                <span class="tile-icon">+</span>
+                Nueva rutina
+            </button>
+
+            <button type="button" class="action-tile">
+                <span class="tile-icon">?</span>
+                Explorar
+            </button>
+        </section>
+
+        <section class="routine-summary">
+            <div>
+                <span class="section-kicker">Mis rutinas</span>
+                <h2>3 rutinas activas</h2>
+            </div>
+            <button type="button" class="ghost-icon-button" aria-label="Crear carpeta">+</button>
+        </section>
+
+        <section class="routine-list" aria-label="Lista de rutinas">
+            <article class="routine-card accent-lime">
+                <div class="routine-card-header">
+                    <div>
+                        <span class="routine-tag">Piernas</span>
+                        <h3>LEGS</h3>
+                    </div>
+                    <button type="button" class="more-button" aria-label="Opciones">...</button>
+                </div>
+
+                <p>Sentadilla Hack, Peso Muerto, Empuje de Caderas, Extensi&oacute;n de cu&aacute;driceps.</p>
+
+                <div class="routine-meta">
+                    <span>7 ejercicios</span>
+                    <span>75 min</span>
+                    <span>Fuerza</span>
+                </div>
+
+                <a href="workout.html" class="primary-routine-button">Empezar rutina</a>
+            </article>
+
+            <article class="routine-card accent-blue">
+                <div class="routine-card-header">
+                    <div>
+                        <span class="routine-tag">Espalda y b&iacute;ceps</span>
+                        <h3>PULL</h3>
+                    </div>
+                    <button type="button" class="more-button" aria-label="Opciones">...</button>
+                </div>
+
+                <p>Dominadas, Remo en Punta, Chin Up con peso, Curl inclinado y face pulls.</p>
+
+                <div class="routine-meta">
+                    <span>6 ejercicios</span>
+                    <span>60 min</span>
+                    <span>Hipertrofia</span>
+                </div>
+
+                <a href="workout.html" class="primary-routine-button">Empezar rutina</a>
+            </article>
+
+            <article class="routine-card accent-rose">
+                <div class="routine-card-header">
+                    <div>
+                        <span class="routine-tag">Pecho y tr&iacute;ceps</span>
+                        <h3>PUSH</h3>
+                    </div>
+                    <button type="button" class="more-button" aria-label="Opciones">...</button>
+                </div>
+
+                <p>Press banca, Press inclinado, Cruces en polea, Press militar y extensiones.</p>
+
+                <div class="routine-meta">
+                    <span>6 ejercicios</span>
+                    <span>65 min</span>
+                    <span>Volumen</span>
+                </div>
+
+                <a href="workout.html" class="primary-routine-button">Empezar rutina</a>
+            </article>
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegaci&oacute;n principal">
+        <a href="dashboard.html">
+            <span class="nav-mark">H</span>
+            Inicio
+        </a>
+        <a href="routines.html" class="active">
+            <span class="nav-mark">R</span>
+            Rutinas
+        </a>
+        <a href="#">
+            <span class="nav-mark">P</span>
+            Perfil
+        </a>
+    </nav>
+
+    <script src="auth.js"></script>
+</body>
+</html>
