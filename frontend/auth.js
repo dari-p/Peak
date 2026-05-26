@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5150";
+const API_URL = getApiUrl();
 const TOKEN_KEY = "peak_token";
 
 const loginForm = document.querySelector("#login-form");
@@ -126,6 +126,14 @@ async function loadCurrentUser() {
 }
 
 async function readError(response) {
+    if (response.status === 401) {
+        return "Email o contrasena incorrectos.";
+    }
+
+    if (response.status === 409) {
+        return "Ya existe una cuenta con ese email.";
+    }
+
     try {
         const data = await response.json();
         return data.message ?? "No se pudo completar la accion.";
@@ -142,4 +150,14 @@ function setMessage(element, text) {
 
 function redirectToLogin() {
     window.location.href = "login.html";
+}
+
+function getApiUrl() {
+    const host = window.location.hostname;
+
+    if (host === "127.0.0.1" || host === "localhost") {
+        return `${window.location.protocol}//${host}:5150`;
+    }
+
+    return "http://localhost:5150";
 }
