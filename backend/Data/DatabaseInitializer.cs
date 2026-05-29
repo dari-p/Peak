@@ -8,6 +8,7 @@ public static class DatabaseInitializer
     {
         db.Database.EnsureCreated();
         AddMissingUserColumns(db);
+        EnsureFitnessStateTable(db);
     }
 
     private static void AddMissingUserColumns(AppDbContext db)
@@ -40,5 +41,24 @@ public static class DatabaseInitializer
         {
             db.Database.ExecuteSqlRaw("ALTER TABLE Users ADD COLUMN Sex TEXT NOT NULL DEFAULT 'not_specified'");
         }
+    }
+
+    private static void EnsureFitnessStateTable(AppDbContext db)
+    {
+        db.Database.ExecuteSqlRaw("""
+            CREATE TABLE IF NOT EXISTS UserFitnessStates (
+                Id INTEGER NOT NULL CONSTRAINT PK_UserFitnessStates PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER NOT NULL,
+                RoutinesJson TEXT NOT NULL DEFAULT '[]',
+                HistoryJson TEXT NOT NULL DEFAULT '[]',
+                UpdatedAt TEXT NOT NULL,
+                CONSTRAINT FK_UserFitnessStates_Users_UserId FOREIGN KEY (UserId) REFERENCES Users (Id) ON DELETE CASCADE
+            )
+        """);
+
+        db.Database.ExecuteSqlRaw("""
+            CREATE UNIQUE INDEX IF NOT EXISTS IX_UserFitnessStates_UserId
+            ON UserFitnessStates (UserId)
+        """);
     }
 }

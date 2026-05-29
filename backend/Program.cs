@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -181,6 +182,75 @@ app.MapGet("/auth/me", async (ClaimsPrincipal principal, AppDbContext db) =>
         : Results.Ok(UserResponse.FromUser(user));
 }).RequireAuthorization();
 
+app.MapGet("/fitness/state", async (ClaimsPrincipal principal, AppDbContext db) =>
+{
+    var userId = GetUserId(principal);
+
+    if (userId is null)
+    {
+        return Results.Unauthorized();
+    }
+
+    var state = await db.UserFitnessStates.SingleOrDefaultAsync(item => item.UserId == userId.Value);
+
+    if (state is null)
+    {
+        state = new UserFitnessState
+        {
+            UserId = userId.Value,
+            RoutinesJson = "[]",
+            HistoryJson = "[]"
+        };
+
+        db.UserFitnessStates.Add(state);
+        await db.SaveChangesAsync();
+    }
+
+    return Results.Ok(new FitnessStateResponse(state.RoutinesJson, state.HistoryJson, state.UpdatedAt));
+}).RequireAuthorization();
+
+app.MapPut("/fitness/state", async (FitnessStateRequest request, ClaimsPrincipal principal, AppDbContext db) =>
+{
+    var userId = GetUserId(principal);
+
+    if (userId is null)
+    {
+        return Results.Unauthorized();
+    }
+
+    var routinesJson = NormalizeJsonArray(request.RoutinesJson);
+    var historyJson = NormalizeJsonArray(request.HistoryJson);
+
+    if (routinesJson is null || historyJson is null)
+    {
+        return Results.BadRequest(new { message = "Fitness state must contain valid JSON arrays." });
+    }
+
+    var state = await db.UserFitnessStates.SingleOrDefaultAsync(item => item.UserId == userId.Value);
+
+    if (state is null)
+    {
+        state = new UserFitnessState
+        {
+            UserId = userId.Value,
+            RoutinesJson = routinesJson,
+            HistoryJson = historyJson
+        };
+
+        db.UserFitnessStates.Add(state);
+    }
+    else
+    {
+        state.RoutinesJson = routinesJson;
+        state.HistoryJson = historyJson;
+        state.UpdatedAt = DateTimeOffset.UtcNow;
+    }
+
+    await db.SaveChangesAsync();
+
+    return Results.Ok(new FitnessStateResponse(state.RoutinesJson, state.HistoryJson, state.UpdatedAt));
+}).RequireAuthorization();
+
 app.Run();
 
 static string NormalizeEmail(string? email)
@@ -191,4 +261,30 @@ static string NormalizeEmail(string? email)
 static string NormalizeSex(string? sex)
 {
     return sex?.Trim().ToLowerInvariant() ?? string.Empty;
+}
+
+static int? GetUserId(ClaimsPrincipal principal)
+{
+    var userIdValue = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+    return int.TryParse(userIdValue, out var userId) ? userId : null;
+}
+
+static string? NormalizeJsonArray(string? json)
+{
+    if (string.IsNullOrWhiteSpace(json))
+    {
+        return "[]";
+    }
+
+    try
+    {
+        using var document = JsonDocument.Parse(json);
+        return document.RootElement.ValueKind == JsonValueKind.Array
+            ? document.RootElement.GetRawText()
+            : null;
+    }
+    catch (JsonException)
+    {
+        return null;
+    }
 }

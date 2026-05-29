@@ -29,19 +29,19 @@
         </header>
 
         <section class="hero-action">
-            <a href="workout.html" class="start-empty-button">
+            <a href="workout.html?empty=1" class="start-empty-button" id="start-empty-workout">
                 <span class="button-icon">+</span>
                 Empezar entrenamiento vac&iacute;o
             </a>
         </section>
 
         <section class="routine-actions" aria-label="Acciones de rutinas">
-            <button type="button" class="action-tile">
+            <button type="button" class="action-tile" id="create-routine-button">
                 <span class="tile-icon">+</span>
                 Nueva rutina
             </button>
 
-            <button type="button" class="action-tile">
+            <button type="button" class="action-tile" id="add-template-button">
                 <span class="tile-icon">?</span>
                 Explorar
             </button>
@@ -50,71 +50,12 @@
         <section class="routine-summary">
             <div>
                 <span class="section-kicker">Mis rutinas</span>
-                <h2>3 rutinas activas</h2>
+                <h2 id="routine-count">Rutinas</h2>
             </div>
-            <button type="button" class="ghost-icon-button" aria-label="Crear carpeta">+</button>
+            <button type="button" class="ghost-icon-button" id="reset-routines-button" aria-label="Restaurar rutinas">R</button>
         </section>
 
-        <section class="routine-list" aria-label="Lista de rutinas">
-            <article class="routine-card accent-lime">
-                <div class="routine-card-header">
-                    <div>
-                        <span class="routine-tag">Piernas</span>
-                        <h3>LEGS</h3>
-                    </div>
-                    <button type="button" class="more-button" aria-label="Opciones">...</button>
-                </div>
-
-                <p>Sentadilla Hack, Peso Muerto, Empuje de Caderas, Extensi&oacute;n de cu&aacute;driceps.</p>
-
-                <div class="routine-meta">
-                    <span>7 ejercicios</span>
-                    <span>75 min</span>
-                    <span>Fuerza</span>
-                </div>
-
-                <a href="workout.html" class="primary-routine-button">Empezar rutina</a>
-            </article>
-
-            <article class="routine-card accent-blue">
-                <div class="routine-card-header">
-                    <div>
-                        <span class="routine-tag">Espalda y b&iacute;ceps</span>
-                        <h3>PULL</h3>
-                    </div>
-                    <button type="button" class="more-button" aria-label="Opciones">...</button>
-                </div>
-
-                <p>Dominadas, Remo en Punta, Chin Up con peso, Curl inclinado y face pulls.</p>
-
-                <div class="routine-meta">
-                    <span>6 ejercicios</span>
-                    <span>60 min</span>
-                    <span>Hipertrofia</span>
-                </div>
-
-                <a href="workout.html" class="primary-routine-button">Empezar rutina</a>
-            </article>
-
-            <article class="routine-card accent-rose">
-                <div class="routine-card-header">
-                    <div>
-                        <span class="routine-tag">Pecho y tr&iacute;ceps</span>
-                        <h3>PUSH</h3>
-                    </div>
-                    <button type="button" class="more-button" aria-label="Opciones">...</button>
-                </div>
-
-                <p>Press banca, Press inclinado, Cruces en polea, Press militar y extensiones.</p>
-
-                <div class="routine-meta">
-                    <span>6 ejercicios</span>
-                    <span>65 min</span>
-                    <span>Volumen</span>
-                </div>
-
-                <a href="workout.html" class="primary-routine-button">Empezar rutina</a>
-            </article>
+        <section class="routine-list" id="routine-list" aria-label="Lista de rutinas">
         </section>
 
     </main>
@@ -135,5 +76,6 @@
     </nav>
 
     <script src="auth.js"></script>
+    <script src="peak.js"></script>
 </body>
 </html>
